@@ -23,14 +23,17 @@ module.exports = {
 		.setName('create-character')
 		.setDescription('Kenobot will share some rules'),
 	async execute(interaction) {
-								const user = interaction.member.user
-								const channel ='980093871587479582';
-								if(interaction.channel.id.includes(channel)){
-								if(interaction.member.roles.cache.has('970708553981624412')){
-																	return messageId = await interaction.reply({ embeds: [ embed1 ] });																	
-															} else {
-																return interaction.reply(`You were right ${interaction.user}, the negotiations were short. (You have insufficient permission for this action)`)
-																
-																	}
-																}else return interaction.reply(`${interaction.user}, Destroyers! (You aren't using that in the right place! Try <\#${channel}>)`) }
+		const user = interaction.member.user;
+		const channel = '980093871587479582';
+		if (interaction.channel.id.includes(channel)) {
+			if (interaction.member.roles.cache.has('970708553981624412')) {
+				return messageId = await interaction.reply({ embeds: [ embed1 ] });
+			}
+			else {
+				return interaction.reply(`You were right ${interaction.user}, the negotiations were short. (You have insufficient permission for this action)`);
+
+			}
+		}
+		else {return interaction.reply(`${interaction.user}, Destroyers! (You aren't using that in the right place! Try <\#${channel}>)`);}
+	},
 };

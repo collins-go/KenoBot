@@ -21,6 +21,7 @@
     "sqlite": "^4.1.1"
   },
   "devDependencies": {
+    "eslint": "^8.17.0",
     "nodemon": "^2.0.16"
   }
 }

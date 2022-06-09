@@ -3,7 +3,7 @@ const path = require('node:path');
 const { Client, Collection, Intents, Permissions, Formatters } = require('discord.js');
 const { DBClient } = require('pg');
 const Sequelize = require('sequelize');
-require("dotenv").config();
+require('dotenv').config();
 const { Users, CurrencyShop } = require('./dbObjects.js');
 
 const currency = new Collection();
@@ -36,8 +36,8 @@ const { token } = require('./config.json');
 
 const client = new Client({
 	intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_PRESENCES],
-	partials: ['MESSAGE', 'CHANNEL', 'REACTION']
-})
+	partials: ['MESSAGE', 'CHANNEL', 'REACTION'],
+});
 
 
 client.commands = new Collection();
@@ -59,10 +59,11 @@ const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'
 for (const file of eventFiles) {
 	const filePath = path.join(eventsPath, file);
 	const event = require(filePath);
-	console.log(`Registering event file: ${event.name}`)
+	console.log(`Registering event file: ${event.name}`);
 	if (event.once) {
 		client.once(event.name, (...args) => event.execute(...args, currency, Users));
-	} else {
+	}
+	else {
 		client.on(event.name, (...args) => event.execute(...args, currency, Users));
 	}
 }
@@ -76,14 +77,14 @@ client.on('interactionCreate', async interaction => {
 	if (!command) return;
 
 	try {
-		await command.execute(interaction, currency,Users),
-		currency.add(interaction.user.id, 1);	
-	} catch (error) {
+		await command.execute(interaction, currency, Users),
+		currency.add(interaction.user.id, 1);
+	}
+	catch (error) {
 		console.error(error);
-		await interaction.followUp({ content: `There was an error while executing this command!`, ephemeral: true });
+		await interaction.followUp({ content: 'There was an error while executing this command!', ephemeral: true });
 	}
 });
-
 
 
 client.login(token);

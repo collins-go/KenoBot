@@ -4,4 +4,4 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('class')
 		.setDescription('tbc'),
-	};
+};

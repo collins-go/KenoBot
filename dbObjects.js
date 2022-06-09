@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('postgres://postgres:meridian@167.99.85.138:5432/kenobot')
+const sequelize = new Sequelize('postgres://postgres:meridian@167.99.85.138:5432/kenobot');
 
 const Users = require('./models/Users.js')(sequelize, Sequelize.DataTypes);
 const CurrencyShop = require('./models/CurrencyShop.js')(sequelize, Sequelize.DataTypes);

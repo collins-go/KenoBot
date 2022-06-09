@@ -1,7 +1,7 @@
 const deploy_commands = require('../deploy-commands');
 const deploy_guild_commands = require('../deploy-guild-commands');
 const Sequelize = require('sequelize');
-const { Users, CurrencyShop } = require('../dbObjects')
+const { Users, CurrencyShop } = require('../dbObjects');
 
 module.exports = {
 	name: 'ready',
@@ -13,14 +13,13 @@ module.exports = {
 		try {
 			deploy_commands(),
 			deploy_guild_commands(),
-			console.log('Connection has been established successfully.')
-		} catch (error) {
+			console.log('Connection has been established successfully.');
+		}
+		catch (error) {
 			console.error('Unable to connect to the database:', error);
 		}
 	},
 
 
 };
-
-
 

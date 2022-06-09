@@ -32,15 +32,18 @@ module.exports = {
 
 				if (!items.length) {
 					return interaction.reply(`${interaction.user} has nothing!`)
-				} else {
+				}
+				else {
 					return messageId = await interaction.reply({ embeds: [embed3] })
 				}
-			} else {
+			}
+			else {
 				return interaction.reply(`You were right ${interaction.user}, the negotiations were short. (You have insufficient permission for this action)`)
 			}
-		} else {
+		}
+		else {
 			return interaction.reply(`${interaction.user}, Destroyers! (You aren't using that in the right place! Try <\#${channel}>)`)
 		}
-	}
+	},
 };
 
