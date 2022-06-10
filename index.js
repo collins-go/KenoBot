@@ -4,7 +4,7 @@ const { Client, Collection, Intents, Permissions, Formatters } = require('discor
 const { DBClient } = require('pg');
 const Sequelize = require('sequelize');
 require("dotenv").config();
-const { Users, CurrencyShop } = require('./dbObjects.js');
+const { Users, CurrencyShop, UserItems } = require('./dbObjects.js');
 
 const currency = new Collection();
 
@@ -38,6 +38,7 @@ const client = new Client({
 	intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_PRESENCES],
 	partials: ['MESSAGE', 'CHANNEL', 'REACTION']
 })
+
 
 
 client.commands = new Collection();
@@ -76,7 +77,7 @@ client.on('interactionCreate', async interaction => {
 	if (!command) return;
 
 	try {
-		await command.execute(interaction, currency,Users),
+		await command.execute(interaction, currency, Users),
 		currency.add(interaction.user.id, 1);	
 	} catch (error) {
 		console.error(error);

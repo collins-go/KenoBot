@@ -9,6 +9,8 @@ module.exports = {
         .setName('balance')
         .setDescription('Kenobot will communicate with the banking clan to check your balance'),
     async execute(interaction, currency) {
+        const storedBalances = await Users.findAll();
+		storedBalances.forEach(b => currency.set(b.user_id, b));
         const target = interaction.user.id
         const credits = currency.getBalance(target);
         const channel = '980405072993333269';

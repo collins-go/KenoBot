@@ -3,19 +3,42 @@ const { MessageEmbed } = require('discord.js');
 const Sequelize = require('sequelize');
 const { Users, CurrencyShop } = require('../dbObjects');
 
+
 module.exports = {
     requiredChannel: 'banking-clan',
     data: new SlashCommandBuilder()
         .setName('inventory')
         .setDescription('Kenobot will tell you what you have in your inventory'),
-    async execute(interaction, currency, Users) {
-		const target = interaction.options.getUser('user') || interaction.user;
-		const user = await Users.findOne({ where: { user_id: target.id } });
-		const items = await user.getItems();
+    async execute(interaction, currency) {
+        const target = await interaction.options.getUser('user') || interaction.user;
+        console.log(`Pass 1: Target ID ${target.id}`);
+        const target2 = await target.id;
+        console.log(`Pass 2: Target ID 2 ${target2}`);
+
+        // try {
+        //     userFound = Users.findOne({ where: { user_id: target2 } });
+        //     console.log(`Pass 3: My God, it printed the ${userFound} value!`);
+        //     return userFound;
+        // } catch (err) {
+        //     console.log(error(err.message));
+        // };
+        let user = await Users.findOne({ where: {user_id: target2}});
+        if (user) {
+            // record found
+            console.log(`Pass 3: My God, it printed the ${user} value!`);
+            console.log(`Pass 3.25: The value is ${user.user_id}`)
+        } else {
+            // not found
+            console.log(`Pass 3.5: failed at line 30`)
+        };
+    
+        const items = await user.getItems(target2);
+        console.log(`Pass 4: ${items}`);
+
         const channel = '980405072993333269';
         const embed3 = new MessageEmbed()
             .setColor('#0099ff')
-            .setTitle('You asked Kenobi to check your balance')
+            .setTitle('You asked Kenobi to check your inventory')
             .setAuthor({ name: 'Kenobi', iconURL: 'https://i.imgur.com/bdZRNUd.jpeg', url: 'https://discord.com/channels/970705432828080129/980405072993333269' })
             .setDescription('"This is what you are carrying"')
             .setThumbnail('https://i.imgur.com/5ZXoFJf.png')
