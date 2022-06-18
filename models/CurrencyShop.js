@@ -8,6 +8,22 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.INTEGER,
 			allowNull: false,
 		},
+		item_encumberance:{
+			type: DataTypes.INTEGER,
+			allowNull: false,
+		},
+		item_rarity: {
+			type: DataTypes.INTEGER,
+			allowNull: false,
+		},
+		item_description: {
+			type: DataTypes.STRING,
+			allowNull: false,
+		},
+		// item_thumbnail: {
+		// 	type: DataTypes.STRING,
+		// 	allowNull: false,
+		// }
 	}, {
 		timestamps: false,
 	});

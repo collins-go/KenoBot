@@ -9,31 +9,30 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('inventory')
         .setDescription('Kenobot will tell you what you have in your inventory'),
+        
     async execute(interaction, currency) {
         const target = await interaction.options.getUser('user') || interaction.user;
-        console.log(`Pass 1: Target ID ${target.id}`);
-        const target2 = await target.id;
-        console.log(`Pass 2: Target ID 2 ${target2}`);
+        if(!target) {
+            
+            return interaction.reply(`There is no inventory for this character. You need to buy something first, so try /buy Comlink (handheld)`)
+        }
 
-        // try {
-        //     userFound = Users.findOne({ where: { user_id: target2 } });
-        //     console.log(`Pass 3: My God, it printed the ${userFound} value!`);
-        //     return userFound;
-        // } catch (err) {
-        //     console.log(error(err.message));
-        // };
+
+        //console.log(`Pass 1: Target ID ${target.id}`);
+        const target2 = await target.id;
+        //console.log(`Pass 2: Target ID 2 ${target2}`);
         let user = await Users.findOne({ where: {user_id: target2}});
         if (user) {
             // record found
-            console.log(`Pass 3: My God, it printed the ${user} value!`);
-            console.log(`Pass 3.25: The value is ${user.user_id}`)
+            //console.log(`Pass 3: My God, it printed the ${user} value!`);
+            //console.log(`Pass 3.25: The value is ${user.user_id}`)
         } else {
             // not found
-            console.log(`Pass 3.5: failed at line 30`)
+            //console.log(`Pass 3.5: failed at line 30`)
         };
     
         const items = await user.getItems(target2);
-        console.log(`Pass 4: ${items}`);
+        //console.log(`Pass 4: ${items}`);
 
         const channel = '980405072993333269';
         const embed3 = new MessageEmbed()
@@ -54,7 +53,7 @@ module.exports = {
             if (!interaction.member.roles.cache.has('980405527693631488')) {
 
                 if (!items.length) {
-                    return interaction.reply(`${interaction.user} has nothing!`)
+                    return interaction.reply(`${interaction.user} has nothing! Try buying something using /Buy Comlink (handheld)`)
                 } else {
                     return messageId = await interaction.reply({ embeds: [embed3] })
                 }
