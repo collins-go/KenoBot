@@ -15,8 +15,8 @@ module.exports = {
         const transferTarget = interaction.options.getUser('target');
         const channel = '980405072993333269';
         const creditEmoji = ':credits:980090964616032337';
-        if (transferAmount > currentAmount) return interaction.reply(`Sorry ${interaction.user}, you only have <${creditEmoji}>${currentAmount}.`);
-        if (transferAmount <= 0) return interaction.reply(`Please enter an amount greater than zero, ${interaction.user}.`);
+        if (transferAmount > currentAmount) return interaction.reply({content:`Sorry ${interaction.user}, you only have <${creditEmoji}>${currentAmount}.`,ephemeral:true});
+        if (transferAmount <= 0) return interaction.reply({content:`Please enter an amount greater than zero, ${interaction.user}.`,ephemeral:true});
         currency.add(interaction.user.id, -transferAmount);
         currency.add(transferTarget.id, transferAmount);
     	
@@ -27,7 +27,7 @@ module.exports = {
             .setDescription('"The banking clan sent you this receipt:"')
             .setThumbnail('https://i.imgur.com/4JbBAFd.png')
             .addFields(
-                { name: 'Credit Transfer', value: `Successfully transferred <${creditEmoji}>${transferAmount} to ${transferTarget.tag}. Your current balance is <${creditEmoji}>${currency.getBalance(interaction.user.id)}` },
+                { name: 'Credit Transfer', value: `Successfully transferred <${creditEmoji}>${transferAmount} to <@${transferTarget.id}>. Your current balance is <${creditEmoji}>${currency.getBalance(interaction.user.id)}` },
             )
             .setTimestamp()
             .setFooter({ text: 'If you believe this is in error, contact the GM.' });
@@ -39,9 +39,8 @@ module.exports = {
             if (!interaction.member.roles.cache.has('980405527693631488')) {
                 return messageId = await interaction.reply({ embeds: [embed4] });
             } else {
-                return interaction.reply(`You were right ${interaction.user}, the negotiations were short. (You have insufficient permission for this action)`)
-
+                return interaction.reply({content: `You were right ${interaction.user}, the negotiations were short. (You have insufficient permission for this action)`, ephemeral: true} )
             }
-        } else return interaction.reply(`${interaction.user}, Destroyers! (You aren't using that in the right place! Try <\#${channel}>)`)
+        } else return interaction.reply({content:`${interaction.user}, Destroyers! (You aren't using that in the right place! Try <\#${channel}>)`,ephemeral:true})
     }
 };

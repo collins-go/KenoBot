@@ -14,7 +14,7 @@ module.exports = {
         const target = await interaction.options.getUser('user') || interaction.user;
         if(!target) {
             
-            return interaction.reply(`There is no inventory for this character. You need to buy something first, so try /buy Comlink (handheld)`)
+            return interaction.reply({content:`There is no inventory for this character. You need to buy something first, so try /buy Comlink (handheld)`,ephemeral:true})
         }
 
 
@@ -42,7 +42,7 @@ module.exports = {
             .setDescription('"This is what you are carrying"')
             .setThumbnail('https://i.imgur.com/5ZXoFJf.png')
             .addFields(
-                { name: 'Inventory', value: `${interaction.user} currently has ${items.map(i => `${i.amount} ${i.item.name}`).join(', ')}` },
+                { name: 'Inventory', value: `${interaction.user} currently has \n ${items.map(i => `${i.amount} ${i.item.name}`).join('\n')}` },
             )
             .setTimestamp()
             .setFooter({ text: 'If you believe this is in error, contact the GM.' });
@@ -53,15 +53,15 @@ module.exports = {
             if (!interaction.member.roles.cache.has('980405527693631488')) {
 
                 if (!items.length) {
-                    return interaction.reply(`${interaction.user} has nothing! Try buying something using /Buy Comlink (handheld)`)
+                    return interaction.reply({content:`${interaction.user} has nothing! Try buying something using /Buy Comlink (handheld)`,ephemeral:true})
                 } else {
-                    return messageId = await interaction.reply({ embeds: [embed3] })
+                    return messageId = await interaction.reply({ embeds: [embed3], ephemeral:true })
                 }
             } else {
-                return interaction.reply(`You were right ${interaction.user}, the negotiations were short. (You have insufficient permission for this action)`)
+                return interaction.reply({content: `You were right ${interaction.user}, the negotiations were short. (You have insufficient permission for this action)`, ephemeral: true} )
             }
         } else {
-            return interaction.reply(`${interaction.user}, Destroyers! (You aren't using that in the right place! Try <\#${channel}>)`)
+            return interaction.reply({content: `${interaction.user}, Destroyers! (You aren't using that in the right place! Try <\#${channel}>)`,ephemeral:true})
         }
     }
 };

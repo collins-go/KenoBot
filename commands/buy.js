@@ -21,10 +21,10 @@ module.exports = {
 
         const channel = '980405072993333269';
         const creditEmoji = ':credits:980090964616032337';
-        const itemName = interaction.options.getString('item-name');
-        const item = await CurrencyShop.findOne({ where: { name: {[Op.like]:'%'+itemName+'%'}} });
+        const itemName = interaction.options.getString('item-name').toLowerCase();
+        const item = await CurrencyShop.findOne({ where: { search_name: {[Op.like]:'%'+itemName+'%'}} });
         if (!item) {
-            return interaction.reply(`This item does not exist. Ensure you have typed it correctly.`)
+            return interaction.reply({content:`This item does not exist. Ensure you have typed it correctly. To find specific spelling, use /find-items <keyword>`,ephemeral:true})
         }
         const itemCost = item.cost;
         const itemEncumberance = item.item_encumberance;
@@ -33,7 +33,7 @@ module.exports = {
         // const itemThumbnail = 'https://i.imgur.com/4JbBAFd.png';
 
         if (item.cost > currency.getBalance(interaction.user.id)) {
-            return interaction.reply(`You currently have <${creditEmoji}>${currency.getBalance(interaction.user.id)}, but the ${item.name} costs <${creditEmoji}>${item.cost}!`);
+            return interaction.reply({content:`You currently have <${creditEmoji}>${currency.getBalance(interaction.user.id)}, but the ${item.name} costs <${creditEmoji}>${item.cost}!`,ephemeral:true});
         }
 
         const user = await Users.findOne({ where: { user_id: interaction.user.id } });
@@ -48,10 +48,10 @@ module.exports = {
             .setDescription(`The item has been addeed to your inventory. Your new balance is <${creditEmoji}>${currency.getBalance(interaction.user.id)}`)
             //            .setThumbnail(itemThumbnail)
             .addFields(
-                { name: 'Description', value: `${itemDescription}`},
                 { name: 'Cost', value: `<${creditEmoji}>${itemCost}`, inline: true },
                 { name: 'Encumberance', value: `${itemEncumberance}`, inline: true },
-                { name: 'Rarity', value: `${itemRarity}`, inline: true }
+                { name: 'Rarity', value: `${itemRarity}`, inline: true },
+                { name: 'Description', value: `${itemDescription}`}
             )
             .setTimestamp()
             .setFooter({ text: 'If you believe this is in error, contact the GM.' });
@@ -59,11 +59,10 @@ module.exports = {
 
         if (interaction.channel.id.includes(channel)) {
             if (!interaction.member.roles.cache.has('980405527693631488')) {
-                return messageId = await interaction.reply({ embeds: [embed4] });
+                return messageId = await interaction.reply({ embeds: [embed4],ephemeral:false });
             } else {
-                return interaction.reply(`You were right ${interaction.user}, the negotiations were short. (You have insufficient permission for this action)`)
-
+                return interaction.reply({content: `You were right ${interaction.user}, the negotiations were short. (You have insufficient permission for this action)`, ephemeral: true} )
             }
-        } else return interaction.reply(`${interaction.user}, Destroyers! (You aren't using that in the right place! Try <\#${channel}>)`)
+        } else return interaction.reply({content:`${interaction.user}, Destroyers! (You aren't using that in the right place! Try <\#${channel}>)`,ephemeral:true})
     }
 };

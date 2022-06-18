@@ -26,9 +26,9 @@ module.exports = {
 	async execute(interaction) {
 								const user = interaction.member.user
 	if(interaction.member.roles.cache.has('970708553981624412')){
-																	return messageId = await interaction.reply({ embeds: [ embed ] });																	
+																	return messageId = await interaction.reply({ embeds: [ embed ],ephemeral:true });																	
 															} else {
-																return interaction.reply(`You were right ${interaction.user}, the negotiations were short. (You have insufficient permission for this action)`)
+																return interaction.reply({content:`You were right ${interaction.user}, the negotiations were short. (You have insufficient permission for this action)`,ephemeral:true})
 																
 																	}
 	}

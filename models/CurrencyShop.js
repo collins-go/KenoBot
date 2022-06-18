@@ -4,6 +4,10 @@ module.exports = (sequelize, DataTypes) => {
 			type: DataTypes.STRING,
 			unique: true,
 		},
+		search_name: {
+			type: DataTypes.STRING,
+			allowNull: false,
+		},
 		cost: {
 			type: DataTypes.INTEGER,
 			allowNull: false,
@@ -17,8 +21,12 @@ module.exports = (sequelize, DataTypes) => {
 			allowNull: false,
 		},
 		item_description: {
-			type: DataTypes.STRING,
+			type: DataTypes.TEXT,
 			allowNull: false,
+		},
+		item_restricted: {
+			type: DataTypes.STRING,
+			allowNull: true,
 		},
 		// item_thumbnail: {
 		// 	type: DataTypes.STRING,

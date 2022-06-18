@@ -22,6 +22,7 @@ Users.prototype.addItem = async function(item) {
 Users.prototype.getItems = function() {
     return UserItems.findAll({
         where: { user_id: this.user_id },
+        order: sequelize.literal('item','ASC'),
         include: ['item'],
     });
 };
