@@ -1,7 +1,7 @@
 const deploy_commands = require('../deploy-commands');
 const deploy_guild_commands = require('../deploy-guild-commands');
 const Sequelize = require('sequelize');
-const { Users, CurrencyShop } = require('../dbObjects')
+const { Users, GearShop } = require('../dbObjects')
 
 module.exports = {
 	name: 'ready',

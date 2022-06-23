@@ -4,7 +4,7 @@ const { Client, Collection, Intents, Permissions, Formatters } = require('discor
 const { DBClient } = require('pg');
 const Sequelize = require('sequelize');
 require("dotenv").config();
-const { Users, CurrencyShop, UserItems } = require('./dbObjects.js');
+const { Users, GearShop, UserItems } = require('./dbObjects.js');
 
 const currency = new Collection();
 

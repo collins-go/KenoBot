@@ -1,10 +1,10 @@
 const {Sequelize, sequelize}  = require('./connect');
 
 const Users = require('./models/Users.js')(sequelize, Sequelize.DataTypes);
-const CurrencyShop = require('./models/CurrencyShop.js')(sequelize, Sequelize.DataTypes);
+const GearShop = require('./models/GearShop.js')(sequelize, Sequelize.DataTypes);
 const UserItems = require('./models/UserItems.js')(sequelize, Sequelize.DataTypes);
 
-UserItems.belongsTo(CurrencyShop, { foreignKey: 'item_id', as: 'item' });
+UserItems.belongsTo(GearShop, { foreignKey: 'item_id', as: 'item' });
 
 Users.prototype.addItem = async function(item) {
     const useritem = await UserItems.findOne({
@@ -27,10 +27,10 @@ Users.prototype.getItems = function() {
     });
 };
 
-CurrencyShop.prototype.getItemList = function() {
-    return CurrencyShop.findAll({
+GearShop.prototype.getItemList = function() {
+    return GearShop.findAll({
         include: ['item'],
     });
 };
 
-module.exports = { Users, CurrencyShop, UserItems };
+module.exports = { Users, GearShop, UserItems };

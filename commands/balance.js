@@ -1,7 +1,7 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js');
 const Sequelize = require('sequelize');
-const { Users, CurrencyShop } = require('../dbObjects.js');
+const { Users, GearShop } = require('../dbObjects.js');
 
 module.exports = {
     requiredChannel: 'banking-clan',

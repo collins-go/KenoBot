@@ -1,6 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { MessageEmbed } = require('discord.js');
-const { CurrencyShop } = require('../dbObjects.js');
+const { GearShop } = require('../dbObjects.js');
 const Sequelize = require('sequelize');
 const { sequelize } = require('../connect');
 const Op = Sequelize.Op
@@ -26,7 +26,7 @@ module.exports = {
         const channel = '980405072993333269';
         const creditEmoji = ':credits:980090964616032337';
         const itemName = interaction.options.getString('item-name').toLowerCase();
-        const item = await CurrencyShop.findAll({ where: { search_name: {[Op.like]:'%'+itemName+'%'}}, order: sequelize.literal('search_name','ASC') })
+        const item = await GearShop.findAll({ where: { search_name: {[Op.like]:'%'+itemName+'%'}}, order: sequelize.literal('search_name','ASC') })
         if (!item) {
             return interaction.reply({content:`There doesn't appear to be any items which include that text in the name. Ensure you have typed it correctly.`,ephemeral:true})
         }
