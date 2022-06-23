@@ -31,47 +31,47 @@ module.exports = (sequelize, DataTypes) => {
 		item_soak_bonus: {
 			type: DataTypes.INTEGER,
 			defaultValue: 0,
-			allowNull: false,
+			allowNull: true,
 		},
 		item_ranged_def_bonus: {
 			type: DataTypes.INTEGER,
 			defaultValue: 0,
-			allowNull: false,
+			allowNull: true,
 		},
 		item_melee_def_bonus: {
 			type: DataTypes.INTEGER,
 			defaultValue: 0,
-			allowNull: false,
+			allowNull: true,
 		},
 		item_char_brawn_bonus: {
 			type: DataTypes.INTEGER,
 			defaultValue: 0,
-			allowNull: false,
+			allowNull: true,
 		},
 		item_char_agility_bonus: {
 			type: DataTypes.INTEGER,
 			defaultValue: 0,
-			allowNull: false,
+			allowNull: true,
 		},
 		item_char_intellect_bonus: {
 			type: DataTypes.INTEGER,
 			defaultValue: 0,
-			allowNull: false,
+			allowNull: true,
 		},
 		item_char_cunning_bonus: {
 			type: DataTypes.INTEGER,
 			defaultValue: 0,
-			allowNull: false,
+			allowNull: true,
 		},
 		item_char_willpower_bonus: {
 			type: DataTypes.INTEGER,
 			defaultValue: 0,
-			allowNull: false,
+			allowNull: true,
 		},
 		item_char_presence_bonus: {
 			type: DataTypes.INTEGER,
 			defaultValue: 0,
-			allowNull: false,
+			allowNull: true,
 		},
 		// item_thumbnail: {
 		// 	type: DataTypes.STRING,
