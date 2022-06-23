@@ -22,7 +22,7 @@ module.exports = {
         const channel = '980405072993333269';
         const creditEmoji = ':credits:980090964616032337';
         const itemName = interaction.options.getString('item-name').toLowerCase();
-        const item = await Gear.findOne({ where: { search_name: {[Op.like]:'%'+itemName+'%'}} });
+        const item = await GearShop.findOne({ where: { search_name: {[Op.like]:'%'+itemName+'%'}} });
         if (!item) {
             return interaction.reply({content:`This item does not exist. Ensure you have typed it correctly. To find specific spelling, use /find-items <keyword>`,ephemeral:true})
         }
