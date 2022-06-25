@@ -2,9 +2,10 @@ const { Sequelize, sequelize } = require('./connect');
 
 
 const GearShop =
-    require('./models/GearShop.js')(sequelize, Sequelize.DataTypes);
+require('./models/GearShop.js')(sequelize, Sequelize.DataTypes);
 require('./models/Users.js')(sequelize, Sequelize.DataTypes);
 require('./models/UserItems.js')(sequelize, Sequelize.DataTypes);
+require('./models/Qualities.js')(sequelize, Sequelize.DataTypes);
 
 const force = process.argv.includes('--force') || process.argv.includes('-f');
 
