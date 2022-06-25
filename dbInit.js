@@ -21,6 +21,9 @@ const triumphEmoji = ':triumph:980090965199048734';
 const failureEmoji = ':failure:980090964905451550';
 const threatEmoji = 'threat:980090964905443328';
 const despairEmoji = ':despair:980090965043867678';
+const forceEmoji = ':force:980090965169696768';
+const lightEmoji = ':forcelight:980090964930625566';
+const darkEmoji = ':forcedark:980090965136142396';
 
 
 // <${abilityEmoji}>
