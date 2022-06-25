@@ -1,8 +1,8 @@
-const {Sequelize, sequelize}  = require('./connect');
+const { Sequelize, sequelize } = require('./connect');
 
 
-const GearShop = 
-require('./models/GearShop.js')(sequelize, Sequelize.DataTypes);
+const GearShop =
+    require('./models/GearShop.js')(sequelize, Sequelize.DataTypes);
 require('./models/Users.js')(sequelize, Sequelize.DataTypes);
 require('./models/UserItems.js')(sequelize, Sequelize.DataTypes);
 
@@ -41,9 +41,9 @@ const despairEmoji = ':despair:980090965043867678';
 sequelize.sync({ force }).then(async () => {
     const shop = [
 
-        GearShop.upsert({ name: 'Comlink (handheld)', search_name: 'comlink (handheld)', cost: 25, item_encumberance: 0, item_rarity: 0, item_description: `This piece of gear is used to communicate between other comlinks. The handheld versions are only viable for extreme distances on planets, reaching up to low orbit. However, long range versions can usually reach the entire planet in range.`, item_restricted: `No`}),
+        GearShop.upsert({ name: 'Comlink (handheld)', search_name: 'comlink (handheld)', cost: 25, item_encumberance: 0, item_rarity: 0, item_description: `This piece of gear is used to communicate between other comlinks. The handheld versions are only viable for extreme distances on planets, reaching up to low orbit. However, long range versions can usually reach the entire planet in range.`, item_restricted: `No` }),
         GearShop.upsert({ name: 'Field Ration Pack', search_name: 'field ration pack', cost: 5, item_encumberance: 0, item_rarity: 0, item_description: `Single meal`, item_restricted: `No` }),
-        GearShop.upsert({ name: 'Mk. III Modular Backpack', search_name: 'mk. iii modular backpack', cost: 75, item_encumberance: 0, item_rarity: 1, item_description: `Increases encumbrance threshold by 2. Extra pockets increase the encumbrance threshold by 1 (6 can be attached)`, item_restricted: `No`}),
+        GearShop.upsert({ name: 'Mk. III Modular Backpack', search_name: 'mk. iii modular backpack', cost: 75, item_encumberance: 0, item_rarity: 1, item_description: `Increases encumbrance threshold by 2. Extra pockets increase the encumbrance threshold by 1 (6 can be attached)`, item_restricted: `No` }),
         GearShop.upsert({ name: '3-MAL Secure Comlink', search_name: '3-mal secure comlink', cost: 250, item_encumberance: 0, item_rarity: 4, item_description: `This is an extremely small comlink with military-grade encryption, favoured by the rebel alliance and civil emergency services. Add 1 <${setbackEmoji}> die to intercept and decrypt the signal. Monitoring a clear frequency on a civilized world adds 2 <${boostEmoji}><${boostEmoji}> dice to Knowledge check related to current events.`, item_restricted: `No` }),
         GearShop.upsert({ name: 'Atgar Artillery Remote', search_name: 'atgar artillery remote', cost: 400, item_encumberance: 1, item_rarity: 7, item_description: `A device used to link a single Gunnery weapon to an Atgar Artillery Remote with a Computers (<${difficultyEmoji}><${difficultyEmoji}><${difficultyEmoji}>) check. If the weapon is an Atgar Space Defense Corporation model, this check is (<${difficultyEmoji}><${difficultyEmoji}>) instead. If the check succeeds, the weapon gains the Inaccurate 2 quality and the holder of the remote can fire the linked weapon via the remote from up to medium range.`, item_restricted: `No` }),
         GearShop.upsert({ name: 'Bespin Motors Remote DVI Activator', search_name: 'bespin motors remote dvi activator', cost: 300, item_encumberance: 0, item_rarity: 4, item_description: `Sometimes, one needs to make a speedy getaway, but starships take their time to start up and get through their pre-flight checks. This remote allows one to jump-start their ship before they've arrived so that they can lift-off immediately upon arrival. May activate a ship from 5 km away, running pre-flight checks to have it ready to go. May potentially pilot a slave circuit with a Daunting (<${difficultyEmoji}><${difficultyEmoji}><${difficultyEmoji}><${difficultyEmoji}>) Piloting check.`, item_restricted: `No` }),
@@ -86,18 +86,18 @@ sequelize.sync({ force }).then(async () => {
         GearShop.upsert({ name: 'Escape Circuit', search_name: 'escape circuit', cost: 1000, item_encumberance: 0, item_rarity: 6, item_description: `Free droids are disgusted by the idea of being brought back into servitude. Restraining bolts would accomplish that if they ever were captured by a nefarious group. The escape circuit augments the droid brain in order to resist the bolt's effects. This may only be installed in droids. Allows resistance to a restraining bolt with an Easy (<${difficultyEmoji}>) Discipline check instead of (<${difficultyEmoji}><${difficultyEmoji}>) difficulty. Spend (<${advantageEmoji}><${advantageEmoji}>) to overload the bolt.`, item_restricted: `No` }),
         GearShop.upsert({ name: 'Gank Comm Implant', search_name: 'gank comm implant', cost: 250, item_encumberance: 0, item_rarity: 7, item_description: `The implants allow for communication via thought, being placed in a user's neocortex. Most adult Gank have these, allowing unmatched coordination. Can communicate silently with others using the implant within a range of several kilometres. Jammers can disrupt the signals.`, item_restricted: `No` }),
         GearShop.upsert({ name: 'Immune Implant', search_name: 'immune implant', cost: 5000, item_encumberance: 0, item_rarity: 6, item_description: `This cybernetic implant is able to react to the presence of pathogens or toxins in the body and automatically release a cocktail of medical drugs to combat it. Grants the skill Resilience +1.`, item_restricted: `No` }),
-        GearShop.upsert({ name: 'Implant Armour', search_name: 'implant armour', cost: 7500, item_encumberance: 0, item_rarity: 7, item_description: `This cybernetic is a set of ceramic-plasteel plates which are implanted beneath the skin to protect the individual further than simple armour. Provides Soak +1.`, item_restricted: `No`,item_soak_bonus: 1 }),
+        GearShop.upsert({ name: 'Implant Armour', search_name: 'implant armour', cost: 7500, item_encumberance: 0, item_rarity: 7, item_description: `This cybernetic is a set of ceramic-plasteel plates which are implanted beneath the skin to protect the individual further than simple armour. Provides Soak +1.`, item_restricted: `No`, item_soak_bonus: 1 }),
         GearShop.upsert({ name: 'Implanted Cyberjack', search_name: 'implanted cyberjack', cost: 3750, item_encumberance: 0, item_rarity: 6, item_description: `Often a prosthetic finger which allows a user to interface directly with computer systems, this implant is popular with slicers. Suffer 2 strain to decrease difficulty of a Computers check to disable a security device or slice into a computer system by <${difficultyEmoji}>.`, item_restricted: `No` }),
-        GearShop.upsert({ name: '', search_name: '', cost: 0, item_encumberance: 0, item_rarity: 0, item_description: ``, item_restricted: `No` }),
-        GearShop.upsert({ name: '', search_name: '', cost: 0, item_encumberance: 0, item_rarity: 0, item_description: ``, item_restricted: `No` }),
-        GearShop.upsert({ name: '', search_name: '', cost: 0, item_encumberance: 0, item_rarity: 0, item_description: ``, item_restricted: `No` }),
-        GearShop.upsert({ name: '', search_name: '', cost: 0, item_encumberance: 0, item_rarity: 0, item_description: ``, item_restricted: `No` }),
-        GearShop.upsert({ name: '', search_name: '', cost: 0, item_encumberance: 0, item_rarity: 0, item_description: ``, item_restricted: `No` }),
-        GearShop.upsert({ name: '', search_name: '', cost: 0, item_encumberance: 0, item_rarity: 0, item_description: ``, item_restricted: `No` }),
-        GearShop.upsert({ name: '', search_name: '', cost: 0, item_encumberance: 0, item_rarity: 0, item_description: ``, item_restricted: `No` }),
- 
- 
-       //GearShop.upsert({ name: '', search_name: '', cost: 0, item_encumberance: 0, item_rarity: 0, item_description: ``, item_restricted: `No` }),
+        GearShop.upsert({
+            name: '',
+            search_name: '',
+            cost: 0,
+            item_encumberance: 0,
+            item_rarity: 0,
+            item_description: ``,
+            item_restricted: `No`,
+
+        }),
     ];
 
     await Promise.all(shop);

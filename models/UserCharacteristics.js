@@ -1,13 +1,48 @@
 module.exports = (sequelize, DataTypes) => {
 	return sequelize.define('user_characteristic', {
 		user_id: DataTypes.STRING,
-		brawn_amonut: DataTypes.INTEGER,
-        agility_amount: DataTypes.INTEGER,
-        intellect_amount: DataTypes.INTEGER,
-        cunning_amount: DataTypes.INTEGER,
-        willpower_amount: DataTypes.INTEGER,
-        presence_amount: DataTypes.INTEGER,
-        forceRank_amount: DataTypes.INTEGER,
+        brawn: {
+			type: DataTypes.INTEGER,
+			unique: true,
+			default: 0,
+			allowNull: true
+		},
+        agility: {
+			type: DataTypes.INTEGER,
+			unique: true,
+			default: 0,
+			allowNull: true
+		},
+        intellect: {
+			type: DataTypes.INTEGER,
+			unique: true,
+			default: 0,
+			allowNull: true
+		},
+        cunning: {
+			type: DataTypes.INTEGER,
+			unique: true,
+			default: 0,
+			allowNull: true
+		},
+        willpower: {
+			type: DataTypes.INTEGER,
+			unique: true,
+			default: 0,
+			allowNull: true
+		},
+        presence: {
+			type: DataTypes.INTEGER,
+			unique: true,
+			default: 0,
+			allowNull: true
+		},
+        forceRank: {
+			type: DataTypes.INTEGER,
+			unique: true,
+			default: 0,
+			allowNull: true
+		},
 	}, {
 		timestamps: false,
 	});
