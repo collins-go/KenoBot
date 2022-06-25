@@ -3,6 +3,7 @@ const {Sequelize, sequelize}  = require('./connect');
 const Users = require('./models/Users.js')(sequelize, Sequelize.DataTypes);
 const GearShop = require('./models/GearShop.js')(sequelize, Sequelize.DataTypes);
 const UserItems = require('./models/UserItems.js')(sequelize, Sequelize.DataTypes);
+const Qualities = require('./models/Qualities.js')(sequelize, Sequelize.DataTypes);
 
 UserItems.belongsTo(GearShop, { foreignKey: 'item_id', as: 'item' });
 
